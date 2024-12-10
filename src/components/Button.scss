@@ -1,4 +1,4 @@
-@import '/src/styling/variables.scss';
+@use '/src/styling/variables.scss';
 
 .button {
   background-color: $base-color;
