@@ -2,9 +2,16 @@ input {
   display: none;
 }
 
+label {
+  cursor: pointer;
+}
+
 .input-wrapper {
+  display: block;
   height: 288px;
   width: 300px;
+  position: relative;
+  pointer-events: auto;
 }
 
 .input-container {
