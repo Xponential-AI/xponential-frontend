@@ -17,6 +17,16 @@
   align-items: center;
 }
 
+.nav-item:hover {
+  cursor: pointer;
+  background-color: variables.$light-tint;
+}
+
+.selected {
+  background-color: variables.$light-tint;
+  border-radius: 5px;
+}
+
 .top {
   display: flex;
   flex-direction: column;
