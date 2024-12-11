@@ -2,10 +2,10 @@ import './Button.scss'
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   text: string,
-  size: 's' | 'm' | 'l',
+  variant: 'primary' | 'secondary' | 'utility'
 }
 
-export const Button = ({ text, size, ...props }: ButtonProps) => {
+export const Button = ({ text, variant, disabled, ...props }: ButtonProps) => {
   const onButtonClick = (e: React.MouseEvent<HTMLButtonElement> ) => {
     console.log('Button was pressed')
     
@@ -14,7 +14,8 @@ export const Button = ({ text, size, ...props }: ButtonProps) => {
 
   return <button 
     {...props}
-    className={`button ${size}`}
+    disabled={disabled}
+    className={`button ${variant}`}
     onClick={onButtonClick}>{text}
   </button>
 }

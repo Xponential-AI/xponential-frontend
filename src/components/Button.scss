@@ -1,17 +1,50 @@
-@import "/src/assets/styles/variables";
-
 .button {
-  background-color: $base-color;
+  min-width: 350px;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  border-radius: 25px;
+  font-size: 14px;
+  font-weight: 600;
 }
 
-.s {
-  width: 100px;
+.primary {
+  background-color: variables.$primary;
+  color: variables.$white;
+  border: none;
+  text-transform: uppercase;
 }
 
-.m {
-  width: 200px;
+.primary:disabled {
+  background-color: variables.$primary-disabled;
 }
 
-.l {
-  width: 300px;
+.primary:enabled:active {
+  background-color: variables.$primary-active;
+}
+
+.secondary {
+  background-color: variables.$white;
+  color: variables.$default;
+  border: solid 2px variables.$tertiary;
+}
+
+.secondary:enabled:active {
+  color: variables.$default-active;
+  background-color: variables.$light-tint;
+}
+
+.utility {
+  min-width: 100px;
+  height: 35px;
+  background-color: variables.$white;
+  color: variables.$primary;
+  border: solid 2px variables.$primary;
+}
+
+.utility:enabled:active {
+  color: variables.$primary-active;
+  border-color: variables.$primary-active;
 }
