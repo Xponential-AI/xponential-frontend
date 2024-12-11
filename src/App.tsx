@@ -1,41 +1,16 @@
-import { useState } from 'react'
-import { Button } from './components/Button';
 import { NavBar } from './components/NavBar';
 import { LeftSideBar } from './components/LeftSideBar';
-
+import { ImportFileCard } from './components/ImportFileCard';
 import './App.scss'
 
 function App() {
-  const [disabled, setDisabled] = useState(false);
-  
   return (
     <>
       <NavBar />
       <div className="page-with-sidebar">
         <LeftSideBar />
-        <div className='page-body'>
-          <Button
-            text="Primary Button"
-            variant="primary"
-            disabled={disabled}
-            onClick={() => setDisabled(true)}
-          />
-
-          <br/>
-
-          <Button
-            text="Secondary Button"
-            variant="secondary"
-            onClick={() => setDisabled(false)}
-          />
-
-          <br/>
-
-          <Button
-            text="Utility"
-            variant="utility"
-            onClick={() => setDisabled(false)}
-          />
+        <div className="page-body">
+          <ImportFileCard/>
         </div>
       </div>
     </>
