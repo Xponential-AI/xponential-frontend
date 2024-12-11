@@ -1,11 +1,14 @@
 import { useState } from 'react'
 import { Button } from '../components/Button';
 import { FileInput } from '../components/inputs/FileInput';
+import { useTranslation } from "react-i18next";
+
 import axios from 'axios';
 
 import "./ImportFileCard.scss";
 
 export const ImportFileCard = () => {
+  const { t } = useTranslation();
   const [file, setFile] = useState<File>();
   const [uploadedFile, setUploadedFile] = useState();
   const [error, setError] = useState();
@@ -52,7 +55,7 @@ export const ImportFileCard = () => {
         <FileInput handleChange={handleChange} fileName={file?.name} handleClear={clearForm}/>
 
         <div>
-          <Button text={"Upload"} variant="primary" disabled={!file}/>
+          <Button text={t("Upload")} variant="primary" disabled={!file}/>
           <Button marginTop={10} text={"Clear"} variant="secondary" onClick={clearForm}/>
         </div>
       </form>
