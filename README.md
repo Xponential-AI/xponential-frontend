@@ -11,8 +11,7 @@ Go into the project:
 Install dependencies by running:
 ```npm install``` 
 
-Serve the project with: 
-```npm run dev```
+Serve the project with: ```npm run dev```
 
 This will serve the project on http://localhost:5173/
 

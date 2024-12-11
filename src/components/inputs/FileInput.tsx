@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import uploadSVG from '../../assets/upload.svg';
 
 import './FileInput.scss';
