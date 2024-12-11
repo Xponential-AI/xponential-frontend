@@ -10,8 +10,8 @@ import "./ImportFileCard.scss";
 export const ImportFileCard = () => {
   const { t } = useTranslation();
   const [file, setFile] = useState<File>();
-  const [uploadedFile, setUploadedFile] = useState();
-  const [error, setError] = useState();
+  // const [uploadedFile, setUploadedFile] = useState();
+  // const [error, setError] = useState();
   
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
     if(event.target.files) {
@@ -40,11 +40,11 @@ export const ImportFileCard = () => {
     axios.post(url, formData, config)
       .then((response) => {
         console.log(response.data);
-        setUploadedFile(response.data.file);
+        // setUploadedFile(response.data.file);
       })
       .catch((error) => {
         console.error("Error uploading file: ", error);
-        setError(error);
+        // setError(error);
       });
   }
 
