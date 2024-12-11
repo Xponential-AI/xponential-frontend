@@ -29,7 +29,7 @@ export const Primary: Story = {
   args: {
     primary: true,
     label: 'Button',
-  },kw
+  },
 };
 
 export const Secondary: Story = {

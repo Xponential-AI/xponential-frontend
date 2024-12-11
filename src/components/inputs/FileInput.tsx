@@ -8,7 +8,7 @@ type FileInputProps = {
   handleClear: () => void;
 }
 
-export const FileInput = ({handleChange, fileName, handleClear}: FileInputProps) => {
+export const FileInput = ({handleChange, fileName}: FileInputProps) => {
   
   return <div className="input-wrapper">
     <label>
