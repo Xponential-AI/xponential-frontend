@@ -21,7 +21,7 @@ const options = {
   standardFontDataUrl: '/standard_fonts/',
 };
 
-const maxWidth = 800;
+const maxWidth = 700;
 
 
 export const ImportFileCard = () => {
