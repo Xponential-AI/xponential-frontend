@@ -118,7 +118,7 @@ export const ImportFileCard = () => {
             ))}
           </Document>
         </div>
-         : <div className="empty-preview">Upload a pdf file to see a preview</div>
+         : <div className="empty-preview">{t('Upload a pdf file to see the preview')}</div>
       }
 
     </div>
