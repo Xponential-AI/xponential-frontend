@@ -5,3 +5,39 @@ form {
   align-items: center;
   gap: 20px;
 }
+
+.page-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 40px;
+  width: 100%;
+}
+
+.empty-preview {
+  width: 600px;
+  height: 500px;
+  background-color: variables.$dark-tint;
+  border-radius: 7px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  color: variables.$tertiary
+}
+
+.preview {
+  
+}
+
+@media only screen and (max-width: 1080px) {
+  .page-wrapper { 
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .empty-preview { 
+    width: 100%;
+  }
+}
