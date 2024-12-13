@@ -21,7 +21,7 @@ const options = {
   standardFontDataUrl: '/standard_fonts/',
 };
 
-const maxWidth = 700;
+const maxWidth = 300;
 
 
 export const ImportFileCard = () => {
@@ -29,7 +29,8 @@ export const ImportFileCard = () => {
   const [file, setFile] = useState<File>();
   const [fileForPreview, setFileForPreview] = useState();
   const [numPages, setNumPages] = useState<number>();
-  
+  const [response, setResponse] = useState<any>();
+
   // const [uploadedFile, setUploadedFile] = useState();
   // const [error, setError] = useState();
   
@@ -43,7 +44,7 @@ export const ImportFileCard = () => {
   
   function handleSubmit(event: React.SyntheticEvent<HTMLFormElement>) {
     event.preventDefault();
-    const url = 'http://localhost:3000/uploadFile';
+    const url = 'https://documentapp-997535946645.us-west1.run.app/process-document';
     const formData = new FormData();
   
     if(!file) {
@@ -62,11 +63,10 @@ export const ImportFileCard = () => {
     axios.post(url, formData, config)
       .then((response) => {
         console.log(response.data);
-        // setUploadedFile(response.data.file);
+        setResponse(response.data)
       })
       .catch((error) => {
         console.error("Error uploading file: ", error);
-        // setError(error);
       });
   }
 
@@ -95,7 +95,8 @@ export const ImportFileCard = () => {
     setNumPages(nextNumPages);
   }
 
-  return <div className='page-wrapper'>
+  return <><div className='page-wrapper'>
+    <div>
       <div className="card-wrapper">
         <form onSubmit={handleSubmit}>
           <FileInput handleChange={handleChange} fileName={file?.name} handleClear={clearForm}/>
@@ -120,6 +121,12 @@ export const ImportFileCard = () => {
         </div>
          : <div className="empty-preview">{t('Upload a pdf file to see the preview')}</div>
       }
-
     </div>
+    {
+      response ? <pre className='response' dangerouslySetInnerHTML={{
+        __html: JSON.stringify(response, null, 2),
+      }} /> : <div className="empty-preview response-preview">{t('Upload a pdf file to see the extracted data')}</div>
+    } 
+    </div>
+    </>
 }
