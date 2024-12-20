@@ -33,7 +33,7 @@ form {
 }
 
 .response-preview { 
-  height: 600px; 
+  height: 650px; 
   width: 700px;
 }
 
@@ -83,6 +83,7 @@ form {
 }
 
 .show-raw-button {
+  width: 180px;
   background-color: variables.$tertiary;
   color: variables.$white;
   font-weight: 600;

@@ -118,7 +118,7 @@ export const ImportFileCard = () => {
           <FileInput handleChange={handleChange} fileName={file?.name} handleClear={clearForm}/>
 
           <div>
-            <Button text={t("Upload")} variant="primary" disabled={!file}/>
+            <Button text={t("Upload")} variant="primary" disabled={!file || loading}/>
             <Button marginTop={10} text={"Clear"} variant="secondary" onClick={clearForm}/>
           </div>
         </form>
@@ -141,7 +141,7 @@ export const ImportFileCard = () => {
     <div>
       {loading ? <div className='response-container-with-raw'><Loading/></div> : 
         <div className='response-container-with-raw'>
-        <div className='button-container'><button className='show-raw-button' onClick={() => setViewRaw(!viewRaw)}>{viewRaw ? t("Show formatted") : t("Show raw")}</button></div>
+        { response && <div className='button-container'><button className='show-raw-button' onClick={() => setViewRaw(!viewRaw)}>{viewRaw ? t("Show formatted") : t("Show raw")}</button></div>}
         {
           response ? viewRaw ? <pre className='response' dangerouslySetInnerHTML={{
             __html: JSON.stringify(response, null, 2),
