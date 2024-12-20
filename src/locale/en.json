@@ -1,6 +1,9 @@
 {
   "translation": {
     "Upload": "Upload",
-    "Upload a pdf file to see the preview": "Upload a pdf file to see the preview"
+    "Upload a pdf file to see the preview": "Upload a pdf file to see the preview",
+    "Could not parse, check raw resonse to see the data": "Could not parse, check raw resonse to see the data",
+    "Show formatted": "Show formatted",
+    "Show raw":"Show raw"
   }
 }

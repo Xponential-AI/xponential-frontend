@@ -33,15 +33,14 @@ form {
 }
 
 .response-preview { 
-  height: 645px; 
+  height: 600px; 
   width: 700px;
 }
 
 .response {
-  border-radius: 7px;
   display: block;
   width: 700px;
-  min-height: 700px;
+  min-height: 600px;
   background-color: variables.$dark-tint;
   padding: 20px;
   overflow-x: auto;
@@ -59,4 +58,34 @@ form {
   .empty-preview { 
     width: 100%;
   }
+}
+
+.response-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.resppnse-line {
+  padding: 5px; 
+}
+
+.response-container-with-raw {
+  background-color: variables.$dark-tint;
+  border-radius: 7px;
+  width: 700px;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+
+.show-raw-button {
+  background-color: variables.$tertiary;
+  color: variables.$white;
+  font-weight: 600;
+  padding: 10px 15px;
+  border-bottom-left-radius: 25px;
 }

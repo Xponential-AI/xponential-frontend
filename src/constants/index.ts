@@ -1,0 +1,1 @@
+export const API_URL = 'https://documentapp-997535946645.us-west1.run.app/process-document';

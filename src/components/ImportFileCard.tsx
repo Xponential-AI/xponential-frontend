@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import { Button } from '../components/Button';
+import { Loading } from '../components/Loading';
 import { FileInput } from '../components/inputs/FileInput';
 import { useTranslation } from "react-i18next";
 import { pdfjs, Document, Page } from 'react-pdf';
 import 'react-pdf/dist/Page/TextLayer.css';
 import 'react-pdf/dist/Page/AnnotationLayer.css';
 import axios from 'axios';
-
+import { API_URL } from '../constants/index.ts';
 import "./ImportFileCard.scss";
 
 import type { PDFDocumentProxy } from 'pdfjs-dist';
@@ -23,16 +24,15 @@ const options = {
 
 const maxWidth = 300;
 
-
 export const ImportFileCard = () => {
   const { t } = useTranslation();
   const [file, setFile] = useState<File>();
   const [fileForPreview, setFileForPreview] = useState();
   const [numPages, setNumPages] = useState<number>();
   const [response, setResponse] = useState<any>();
+  const [viewRaw, setViewRaw] = useState<boolean>(false);
 
-  // const [uploadedFile, setUploadedFile] = useState();
-  // const [error, setError] = useState();
+  const [ loading, setLoading ] = useState<boolean>(false);
   
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
     if(event.target.files) {
@@ -44,7 +44,7 @@ export const ImportFileCard = () => {
   
   function handleSubmit(event: React.SyntheticEvent<HTMLFormElement>) {
     event.preventDefault();
-    const url = 'https://documentapp-997535946645.us-west1.run.app/process-document';
+    const url = API_URL;
     const formData = new FormData();
   
     if(!file) {
@@ -59,7 +59,8 @@ export const ImportFileCard = () => {
         'content-type': 'multipart/form-data',
       },
     };
-    
+
+    setLoading(true);
     axios.post(url, formData, config)
       .then((response) => {
         console.log(response.data);
@@ -67,6 +68,8 @@ export const ImportFileCard = () => {
       })
       .catch((error) => {
         console.error("Error uploading file: ", error);
+      }).finally(() => {
+        setLoading(false);
       });
   }
 
@@ -89,10 +92,23 @@ export const ImportFileCard = () => {
     fileReader.readAsDataURL(file);
   }
 
-  console.log({fileForPreview})
-
   function onDocumentLoadSuccess({ numPages: nextNumPages }: PDFDocumentProxy): void {
     setNumPages(nextNumPages);
+  }
+
+  const renderResponse = () => {
+    try {
+      return response.content.map( (item: any) => {
+        if(typeof item === 'object') {
+          return <div className='resppnse-line'><b>{Object.keys(item)[0]}</b><span>{`: ${item[Object.keys(item)[0]]}`}</span></div>
+        } else if(typeof item === 'string') {
+          return <div>{item.split('\t').map(line => <div className='response-line'>{line}<br/></div>)}</div>
+        }
+      })
+    }
+    catch (e) {
+      return <div>{t('Could not parse, check raw resonse to see the data')}</div>
+    }
   }
 
   return <><div className='page-wrapper'>
@@ -122,11 +138,18 @@ export const ImportFileCard = () => {
          : <div className="empty-preview">{t('Upload a pdf file to see the preview')}</div>
       }
     </div>
-    {
-      response ? <pre className='response' dangerouslySetInnerHTML={{
-        __html: JSON.stringify(response, null, 2),
-      }} /> : <div className="empty-preview response-preview">{t('Upload a pdf file to see the extracted data')}</div>
-    } 
+    <div>
+      {loading ? <div className='response-container-with-raw'><Loading/></div> : 
+        <div className='response-container-with-raw'>
+        <div className='button-container'><button className='show-raw-button' onClick={() => setViewRaw(!viewRaw)}>{viewRaw ? t("Show formatted") : t("Show raw")}</button></div>
+        {
+          response ? viewRaw ? <pre className='response' dangerouslySetInnerHTML={{
+            __html: JSON.stringify(response, null, 2),
+          }} /> : <div className="response response-container">{renderResponse()}</div> : <div className="empty-preview response-preview">{t('Upload a pdf file to see the extracted data')}</div>
+        }
+      </div>
+      }
+    </div>
     </div>
     </>
 }
