@@ -96,17 +96,28 @@ export const ImportFileCard = () => {
     setNumPages(nextNumPages);
   }
 
+  const prettyPrintKeys = (key: string) => {
+    return key.replaceAll('_', ' ').trim();
+  }
+
   const renderResponse = () => {
     try {
-      return response.content.map( (item: any) => {
-        if(typeof item === 'object') {
-          return <div className='resppnse-line'><b>{Object.keys(item)[0]}</b><span>{`: ${item[Object.keys(item)[0]]}`}</span></div>
-        } else if(typeof item === 'string') {
-          return <div>{item.split('\t').map(line => <div className='response-line'>{line}<br/></div>)}</div>
-        }
+      let keys = Object.keys(response);
+      
+      if (keys.indexOf('doc_type_values') > 0) {
+        keys.splice(keys.indexOf('doc_type_values'), 1);
+        keys.unshift('doc_type_values');
+      }
+      
+      return keys.map( (key) => {
+        return <div key={key} className='resppnse-line'>
+          <b className="response-key">{prettyPrintKeys(key)}:</b>
+          {Array.isArray(response[key]) ? <div>{response[key].map((value: any) => <div key={value}>{value}</div>)}</div> : <div>{response[key]}</div>}
+        </div>
       })
     }
     catch (e) {
+      console.log(e);
       return <div>{t('Could not parse, check raw resonse to see the data')}</div>
     }
   }
