@@ -3,7 +3,7 @@
 Install `node.js` https://nodejs.org/en/download/package-manager (follow the instructions to install node on your operating system Mac/Windows/Linux)
 
 To clone the repo in the terminal run:
-```git clone https://github.com/LevytsRoman/xponential-frontend.git```
+```git clone https://github.com/Xponential-AI/xponential-frontend.git```
 
 Go into the project: 
 ```cd xponential-frontend```
