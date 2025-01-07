@@ -103,7 +103,7 @@ export const DocumentLibrary = () => {
           <button className={clsx({active: VIEW_OPTIONS.GRID === view}, 'view-button', 'grid-button')} onClick={()=>setView(VIEW_OPTIONS.GRID)}><GridSVG/></button>
         </div>
         <div>
-          <input className='document-search' value={searchText} onChange={e => setSearchText(e.target.value)} type="text" placeholder={t('Search documents')}/>
+          <input className='document-search' value={searchText} onChange={e => setSearchText(e.target.value.toLowerCase())} type="text" placeholder={t('Search documents')}/>
         </div>
       </div>
     </div>
