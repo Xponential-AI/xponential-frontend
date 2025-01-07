@@ -70,7 +70,7 @@ const mockDocuments = [
 ]
 
 export const DocumentLibrary = () => {
-  const [ view, setView ] = useState(VIEW_OPTIONS.LIST)
+  const [ view, setView ] = useState(VIEW_OPTIONS.GRID)
   const [documents, setDocuments] = useState(mockDocuments);
   const [ searchText, setSearchText ] = useState('');
   const { t } = useTranslation();
