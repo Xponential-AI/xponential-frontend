@@ -1,0 +1,49 @@
+.document-library { 
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.document-library-header {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 20px;
+}
+
+.view-button {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: variables.$default;
+  background-color: variables.$white;
+  path {
+    fill: variables.$default;
+  }
+
+  &.active {
+    background-color: variables.$default;
+    color: variables.$white;
+    path {
+      fill: variables.$white;
+    }
+  }
+}
+
+.list-button {
+  border-top-left-radius: 7px;
+  border-bottom-left-radius: 7px;
+}
+
+.grid-button {
+  border-top-right-radius: 7px;
+  border-bottom-right-radius: 7px;
+}
+
+.document-search {
+  height: 50px;
+  padding: 0 10px;
+  border-radius: 7px;
+}

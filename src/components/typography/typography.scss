@@ -1,0 +1,70 @@
+.typography--variant-h1 {
+  font-size: 5rem;
+  font-weight: 500;
+  font-family: "Montserrat", serif;
+}
+
+.typography--variant-h2 {
+  font-size: 3.375rem;
+  font-weight: 500;
+  font-family: "Montserrat", serif;
+}
+
+.typography--variant-h3 {
+  font-size: 1.875rem;
+  font-weight: bold;
+  font-family: "Montserrat", serif;
+}
+
+.typography--variant-h4 {
+  font-size: 2.125rem;
+  font-weight: 500;
+  font-family: "Inter", serif;
+}
+
+.typography--variant-h5 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  font-family: "Inter", serif;
+}
+
+.typography--variant-h6 {
+  font-size: 1.25rem;
+  font-weight: 500;
+  font-family: "Inter", serif;
+}
+
+.typography--variant-span {
+  font-family: "Inter", serif;
+  font-size: 0.875rem;
+  color: variables.$secondary
+}
+
+.typography--variant-p {
+  font-family: "Inter", serif;
+  font-size: 1.25rem;
+  font-weight: regular;
+}
+
+.typography--variant-subheading2 {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.typography--variant-body1 {
+  font-size: 1rem;
+}
+
+.typography--variant-body1 {
+  font-size: 0.875rem;
+}
+
+.typography--color-primary {
+  color: #f2994a;
+}
+
+.typography--color-error {
+  color: #eb5757;
+}
+
+

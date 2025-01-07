@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { Button } from '../components/Button';
-import { Loading } from '../components/Loading';
-import { FileInput } from '../components/inputs/FileInput';
+import { Button } from '../components/Button.tsx';
+import { Loading } from '../components/Loading.tsx';
+import { FileInput } from '../components/inputs/FileInput.tsx';
 import { useTranslation } from "react-i18next";
 import { pdfjs, Document, Page } from 'react-pdf';
 import 'react-pdf/dist/Page/TextLayer.css';

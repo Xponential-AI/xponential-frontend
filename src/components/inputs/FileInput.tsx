@@ -14,7 +14,7 @@ export const FileInput = ({handleChange, fileName}: FileInputProps) => {
     <label>
       <div className="input-container">
         <img alt="search" src={uploadSVG}/>
-        <input type="file" onChange={handleChange}/>
+        <input className="file-input" type="file" onChange={handleChange}/>
       </div>
       <div className="input-text">
         {fileName ? fileName : "Import a file"}
