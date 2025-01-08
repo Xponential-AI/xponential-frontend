@@ -1,7 +1,7 @@
 import { clsx } from 'clsx';
 import "./typography.scss";
 
-const Typography = ({ variant, color, children, ...props }: any) => {
+const Typography = ({ variant, color, children, size, customClass, ...props }: any) => {
   const Component = variant ? variant : "p";
 
   return (
@@ -9,6 +9,8 @@ const Typography = ({ variant, color, children, ...props }: any) => {
       className={clsx({
         [`typography--variant-${variant}`]: variant,
         [`typography--color-${color}`]: color,
+        [size]: size,
+        [customClass] : customClass
       })}
       {...props}
     >

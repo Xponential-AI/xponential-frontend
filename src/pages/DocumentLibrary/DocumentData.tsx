@@ -2,22 +2,19 @@ import { useState, useEffect } from 'react';
 import { P, Span } from '../../components/typography/index';
 import Pencil from '../../assets/edit.svg?react';
 import CheckMark from '../../assets/check.svg?react';
+import { formatPercentage } from '../../utils';
 
 const EditableField = ({setEdit, setDocument, currentDocument, edit, fieldName, tag, style}: any) => {
   const Tag = tag ? tag : Span
 
-  return <div className='flex justify-between'>
+  return <div className='flex justify-between editable-field'>
   <div className="data-text" onClick={()=> setEdit(fieldName)}>
-  {edit === fieldName ? <input autoFocus value={currentDocument[fieldName]} onChange={e => {
+  {edit === fieldName ? <form onSubmit={()=> setEdit('')}><input name={fieldName} autoFocus value={currentDocument[fieldName]} onChange={e => {
     setDocument({...currentDocument, [fieldName]: e.target.value})
-  }}/> : <Tag style={style}>{currentDocument[fieldName]}</Tag>}
+  }}/></form> : <Tag style={style}>{currentDocument[fieldName]}</Tag>}
   </div>
   {edit === fieldName ? <button className="edit-field checkmark" onClick={()=> setEdit('')}><CheckMark/></button> : <button className="edit-field" onClick={()=> setEdit(fieldName)}><Pencil/></button>}
   </div>
-}
-
-const formatPercentage = (percentage: number) => {
-  return `${percentage * 100}%`
 }
 
 export const DocumentData = ({document, onDocumentSubmit, showConfidence, showFields}: any) => {

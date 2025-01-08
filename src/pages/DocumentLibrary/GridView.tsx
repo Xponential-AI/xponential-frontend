@@ -8,7 +8,7 @@ import { PDFPreview } from './PDFPreview';
 export const GridView = ({documents, onDocumentSubmit, onLoadMore}: any) => {
   const { t } = useTranslation();
 
-  return <><div className="documents-list">
+  return <div className="grid-view"><div className="documents-list">
   {documents.map((document: any) => <div className="document-container" key={document.id}>
     <div className="grid-preview">
       <PDFPreview file={document.fileUrl} />
@@ -19,5 +19,5 @@ export const GridView = ({documents, onDocumentSubmit, onLoadMore}: any) => {
   <div className="load-more-button-container">
     <Button onClick={() => onLoadMore()} width={600} variant='secondary' text={t('Load more')}/>
   </div>
-  </>
+  </div>
 }

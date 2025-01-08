@@ -43,7 +43,11 @@
 .typography--variant-p {
   font-family: "Inter", serif;
   font-size: 1.25rem;
-  font-weight: regular;
+  font-weight: normal;
+
+  &.small {
+    font-size: 1rem;  
+  }
 }
 
 .typography--variant-subheading2 {

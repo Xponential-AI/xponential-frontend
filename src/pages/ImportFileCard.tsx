@@ -122,7 +122,7 @@ export const ImportFileCard = () => {
     }
   }
 
-  return <><div className='page-wrapper'>
+  return <div className='import-file-card'><div className='page-wrapper'>
     <div>
       <div className="card-wrapper">
         <form onSubmit={handleSubmit}>
@@ -162,5 +162,5 @@ export const ImportFileCard = () => {
       }
     </div>
     </div>
-    </>
+    </div>
 }
